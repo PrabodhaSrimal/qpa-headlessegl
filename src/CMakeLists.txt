@@ -14,14 +14,23 @@ add_definitions(
     ${EGL_DEFINITIONS}
 )
 
+target_include_directories(headlessegl
+    PUBLIC
+    ${Qt5FontDatabaseSupport_PRIVATE_INCLUDE_DIRS}
+    ${Qt5EventDispatcherSupport_PRIVATE_INCLUDE_DIRS}
+    ${Qt5EglSupport_PRIVATE_INCLUDE_DIRS}
+)
+
+# include_directories(${Qt${QT_VERSION_MAJOR}FontDatabaseSupport_PRIVATE_INCLUDE_DIRS})
+
 target_link_libraries(headlessegl
     Qt5::Core
     Qt5::CorePrivate
     Qt5::Gui
     Qt5::GuiPrivate
-    Qt5FontDatabaseSupport::Qt5FontDatabaseSupport
-    Qt5EventDispatcherSupport::Qt5EventDispatcherSupport
-    Qt5EglSupport::Qt5EglSupport
+    Qt5::FontDatabaseSupport
+    Qt5::EventDispatcherSupport
+    Qt5::EglSupport
     Fontconfig::Fontconfig
     ${FREETYPE_LIBRARIES}
     ${EGL_LIBRARIES}
